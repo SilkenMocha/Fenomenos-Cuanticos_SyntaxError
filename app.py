@@ -103,7 +103,7 @@ if seleccion == "Reactividad":
     col2.metric(label="GAP (eV", value=str(gap_eV))
 #__________________________________________________________________________________________
 #Visualización molecular#
-if seleccion == "Visualizacion molecular"
+if seleccion == "Visualizacion molecular":
     st.title('VISUALIZACIÓN MOLECUALR')
     st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional")
     
@@ -127,7 +127,7 @@ if seleccion == "Visualizacion molecular"
     render_mol(blk)
 #__________________________________________________________________________________________
 #Otros parámetros#
-if seleccion == "Otros parametros"
+if seleccion == "Otros parametros":
     st.write("Bienvenido. Aqui encontraras LogP y otras cosas")
     compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
 
