@@ -19,6 +19,9 @@ from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
 #Inicio#
+st.title ("FENÓMENOS CUÁNTICOS")
+st.subheader("Erick López Saldviar 348916")
+st.balloons()
 seleccion = st.selectbox("Seleccione una opción: ", ["Reactividad", "Visualizacion molecular", "Otros parametros"])
 
 #__________________________________________________________________________________________
