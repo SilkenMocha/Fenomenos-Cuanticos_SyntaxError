@@ -1,1 +1,1 @@
-# Fenomenos-Cuanticos_SyntaxErro
+# Fenomenos-Cuanticos_SyntaxError
