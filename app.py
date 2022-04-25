@@ -18,6 +18,8 @@ from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
+import pybel
+#_________________________
 #Inicio#
 st.title ("FENÓMENOS CUÁNTICOS")
 st.subheader("Erick López Saldviar 348916")
@@ -132,7 +134,14 @@ if seleccion == "Visualizacion molecular":
         xyz = uploaded_file.getvalue().decode("utf-8")
         render_mol(xyz)
         st.write(xyz)
+      
+      def xyz_to_smiles(fname:str) -> str:
+        mol = next(pybel.readfile("xyz", fname))
+        smi = mol.write(format="smi")
+        return smi.split()[0].strip()
 
+      smi = xyz_to_smiles(xyz)
+      st.write(smi)
 
 
     if seleccion_molecula == "SMILES":
