@@ -4,4 +4,4 @@ stmol
 numpy
 py3Dmol
 matplotlib
-git+https://github.com/openbabel/openbabel
+
