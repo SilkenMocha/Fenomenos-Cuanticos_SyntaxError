@@ -19,6 +19,8 @@ from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
 import pybel
+from fs import fname
+from sys import argv
 #_________________________
 #Inicio#
 st.title ("FENÓMENOS CUÁNTICOS")
