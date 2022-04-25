@@ -136,9 +136,9 @@ if seleccion == "Visualizacion molecular":
         render_mol(xyz)
         st.write(xyz)
       
-    
+      #xyz to SMILES
       def xyz_to_smiles(string_data) -> str:
-        mol = next(pybel.readfile("xyz", string_data))
+        mol = next(pybel.readstring("xyz", string_data))
         smi = mol.write(format="smi")
         return smi.split()[0].strip()
 
