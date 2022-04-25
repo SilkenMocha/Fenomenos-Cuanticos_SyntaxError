@@ -22,6 +22,19 @@ from rdkit.Chem import rdMolDescriptors
 st.title ("FENÓMENOS CUÁNTICOS")
 st.subheader("Erick López Saldviar 348916")
 
+seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
+
+if seleccion_molecula == "SMILES":
+  compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
+
+if seleccion_molecula == "Subir un archivo":
+  uploaded_files = st.sidebar.file_uploader("Choose xyz files", accept_multiple_files=True)
+  for uploaded_file in uploaded_files:
+    xyz = uploaded_file.getvalue().decode("utf-8")
+    render_mol(xyz)
+
+
+
 seleccion = st.selectbox("Seleccione una opción: ", ["Reactividad", "Visualizacion molecular", "Otros parametros"])
 
 #__________________________________________________________________________________________
@@ -110,6 +123,15 @@ if seleccion == "Visualizacion molecular":
     st.title('VISUALIZACIÓN MOLECUALR')
     st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional")
     
+
+    def render_mol(xyz):
+      xyzview = py3Dmol.view(width=400,height=400)
+      xyzview.addModel(xyz,'xyz')
+      xyzview.setStyle({'stick':{}})
+      xyzview.setBackgroundColor('white')#('0xeeeeee')
+      xyzview.zoomTo()
+      showmol(xyzview, height = 500,width=800)
+
     def makeblock(smi):
         mol = Chem.MolFromSmiles(smi)
         mol = Chem.AddHs(mol)
@@ -125,7 +147,7 @@ if seleccion == "Visualizacion molecular":
         xyzview.zoomTo()
         showmol(xyzview,height=500,width=500)
 
-    compound_smiles=st.text_input('SMILES please','CC')
+    
     blk=makeblock(compound_smiles)
     render_mol(blk)
 #__________________________________________________________________________________________
