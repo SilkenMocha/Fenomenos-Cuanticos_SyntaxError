@@ -4,4 +4,4 @@ stmol
 numpy
 py3Dmol
 matplotlib
-
+xyz2mol
