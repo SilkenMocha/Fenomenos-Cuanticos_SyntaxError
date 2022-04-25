@@ -144,7 +144,7 @@ if seleccion == "Visualizacion molecular":
 
       fname = uploaded_file.name
       file = uploaded_file.getvalue().decode("utf-8")
-      smi = xyz_to_smiles(file)
+      smi = xyz_to_smiles(fname)
       smi
 
 
