@@ -18,7 +18,7 @@ from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
-
+import xyz2mol
 from io import StringIO
 #_________________________
 #Inicio#
@@ -138,6 +138,7 @@ if seleccion == "Visualizacion molecular":
       
       #xyz to SMILES
 
+      xyz2mol.py string_data --ignore-chiral
 
       stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
       string_data = stringio.read()
