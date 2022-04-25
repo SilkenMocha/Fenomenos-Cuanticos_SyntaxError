@@ -142,7 +142,7 @@ if seleccion == "Visualizacion molecular":
         smi = mol.write(format="smi")
         return smi.split()[0].strip()
 
-      smi = xyz_to_smiles(uploaded_file.read())
+      smi = xyz_to_smiles(uploaded_file.getvalue())
       st.write(smi)
 
 
