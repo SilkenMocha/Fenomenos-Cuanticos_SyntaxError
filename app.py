@@ -138,7 +138,7 @@ if seleccion == "Visualizacion molecular":
       
       #xyz to SMILES
 
-      xyz2mol.py string_data --ignore-chiral
+      xyz2mol.py uploaded_file.getvalue().decode("utf-8") --ignore-chiral
 
       stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
       string_data = stringio.read()
