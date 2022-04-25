@@ -143,7 +143,7 @@ if seleccion == "Visualizacion molecular":
         return smi.split()[0].strip()
 
       smi = xyz_to_smiles(StringIO(uploaded_file.getvalue().decode("utf-8")))
-      st.write(smi)
+      smi
 
 
     if seleccion_molecula == "SMILES":
