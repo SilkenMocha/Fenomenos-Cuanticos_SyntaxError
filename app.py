@@ -18,8 +18,8 @@ from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
-import pybel
-from pybel import readstring 
+from openbabel import pybel
+#from pybel import  
 from io import StringIO
 #_________________________
 #Inicio#
