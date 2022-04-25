@@ -4,4 +4,4 @@ stmol
 numpy
 py3Dmol
 matplotlib
-xyz2mol
+git+https://github.com/jensengroup/xyz2mol
