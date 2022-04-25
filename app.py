@@ -19,6 +19,7 @@ from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
 import pybel
+from pybel import pybel.readstring 
 from io import StringIO
 #_________________________
 #Inicio#
