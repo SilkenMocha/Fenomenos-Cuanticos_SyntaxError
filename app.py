@@ -19,7 +19,7 @@ from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
 import pybel
-from pybel import pybel.readstring 
+#from pybel import pybel.readstring 
 from io import StringIO
 #_________________________
 #Inicio#
@@ -139,7 +139,7 @@ if seleccion == "Visualizacion molecular":
       
       #xyz to SMILES
       def xyz_to_smiles(string_data) -> str:
-        mol = next(pybel.readstring("xyz", string_data))
+        mol = pybel.readstring("xyz", string_data)
         smi = mol.write(format="smi")
         return smi.split()[0].strip()
 
