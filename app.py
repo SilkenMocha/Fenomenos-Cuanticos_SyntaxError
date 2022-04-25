@@ -137,14 +137,16 @@ if seleccion == "Visualizacion molecular":
         st.write(xyz)
       
     
-      def xyz_to_smiles(xyz: str) -> str:
-        mol = next(pybel.readfile("xyz", xyz))
+      def xyz_to_smiles(string_data) -> str:
+        mol = next(pybel.readfile("xyz", string_data))
         smi = mol.write(format="smi")
         return smi.split()[0].strip()
 
-      fname = uploaded_file.name
-      smi = xyz_to_smiles(xyz)
-      smi
+      stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+      string_data = stringio.read()
+
+      smi = xyz_to_smiles(string_data)
+      st.write(smi)
 
 
     if seleccion_molecula == "SMILES":
