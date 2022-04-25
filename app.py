@@ -115,8 +115,7 @@ if seleccion == "Visualizacion molecular":
     st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional")
     
     seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
-    if seleccion_molecula == "SMILES":
-      compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
+
 
     if seleccion_molecula == "Subir un archivo":
       uploaded_files = st.sidebar.file_uploader("Choose xyz files", accept_multiple_files=True)
@@ -133,24 +132,25 @@ if seleccion == "Visualizacion molecular":
         xyzview.zoomTo()
         showmol(xyzview, height = 500,width=800)
 
-    def makeblock(smi):
-        mol = Chem.MolFromSmiles(smi)
-        mol = Chem.AddHs(mol)
-        AllChem.EmbedMolecule(mol)
-        mblock = Chem.MolToMolBlock(mol)
-        return mblock
+    if seleccion_molecula == "SMILES":
+      compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
+      def makeblock(smi):
+          mol = Chem.MolFromSmiles(smi)
+          mol = Chem.AddHs(mol)
+          AllChem.EmbedMolecule(mol)
+          mblock = Chem.MolToMolBlock(mol)
+          return mblock
 
-    def render_mol(xyz):
-        xyzview = py3Dmol.view()#(width=1000,height=1000)
-        xyzview.addModel(xyz,'mol')
-        xyzview.setStyle({'stick':{}})
-        xyzview.setBackgroundColor('white')
-        xyzview.zoomTo()
-        showmol(xyzview,height=500,width=500)
+      def render_mol(xyz):
+          xyzview = py3Dmol.view()#(width=1000,height=1000)
+          xyzview.addModel(xyz,'mol')
+          xyzview.setStyle({'stick':{}})
+          xyzview.setBackgroundColor('white')
+          xyzview.zoomTo()
+          showmol(xyzview,height=500,width=500)
 
-    
-    blk=makeblock(compound_smiles)
-    render_mol(blk)
+      blk=makeblock(compound_smiles)
+      render_mol(blk)
 #__________________________________________________________________________________________
 #Otros parámetros#
 if seleccion == "Otros parametros":
