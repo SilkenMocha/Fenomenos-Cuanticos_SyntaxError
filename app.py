@@ -35,7 +35,7 @@ if seleccion_molecula == "Subir un archivo":
 
 
 
-seleccion = st.selectbox("Seleccione una opción: ", ["Reactividad", "Visualizacion molecular", "Otros parametros"])
+seleccion = st.selectbox("Seleccione una opción: ", ["Visualizacion molecular", "Reactividad", "Otros parametros"])
 
 #__________________________________________________________________________________________
 #Calculo reactividad#
