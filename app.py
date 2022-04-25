@@ -114,12 +114,12 @@ if seleccion == "Visualizacion molecular":
     st.title('VISUALIZACIÓN MOLECUALR')
     st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional")
     
-  seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
-  if seleccion_molecula == "SMILES":
-    compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
+    seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
+    if seleccion_molecula == "SMILES":
+      compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
 
-  if seleccion_molecula == "Subir un archivo":
-    uploaded_files = st.sidebar.file_uploader("Choose xyz files", accept_multiple_files=True)
+    if seleccion_molecula == "Subir un archivo":
+      uploaded_files = st.sidebar.file_uploader("Choose xyz files", accept_multiple_files=True)
 
     for uploaded_file in uploaded_files:
       xyz = uploaded_file.getvalue().decode("utf-8")
