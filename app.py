@@ -152,7 +152,7 @@ if seleccion == "Visualizacion molecular":
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
       
-        st.subheader("SMILES: "xyz_to_smi(string_data))
+        st.subheader("SMILES: " + xyz_to_smi(string_data))
 
 
 
