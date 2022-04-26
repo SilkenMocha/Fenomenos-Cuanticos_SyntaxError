@@ -144,7 +144,7 @@ if seleccion == "Visualizacion molecular":
         req = requests.post(webserver_url,data = {'options':options,'input':str_input})
       
         if req.status_code == 200:
-          return json.loads(req.text)['result'].split()[0]
+          return json.loads(req.text)['result'].split(separator='')[0]
         else:
           return None
     
