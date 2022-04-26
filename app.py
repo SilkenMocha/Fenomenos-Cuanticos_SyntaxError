@@ -18,7 +18,8 @@ from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
-import xyz2mol
+import request
+import json
 from io import StringIO
 #_________________________
 #Inicio#
@@ -137,8 +138,19 @@ if seleccion == "Visualizacion molecular":
         st.write(xyz)
       
       #xyz to SMILES
-
+      def xyz_to_smi(str_input):
+        webserver_url = "https://www.cheminfo.org/webservices/babel"
+        options='{"ph":"","hydrogens":"No change","coordinates":"None","inputFormat":"xyz -- XYZ cartesian coordinates format","outputFormat":"smi -- SMILES format"}'
+        req = requests.post(webserver_url,data = {'options':options,'input':str_input})
       
+        if req.status_code == 200:
+          return json.loads(req.text)['result'].split()[0]
+        else:
+          return None
+      
+      if __name__=="__main__":
+        with open(string_data) as f:
+          st.write(xyz_to_smi(f.read()))
 
       stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
       string_data = stringio.read()
