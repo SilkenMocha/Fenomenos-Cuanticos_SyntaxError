@@ -148,11 +148,11 @@ if seleccion == "Visualizacion molecular":
         else:
           return None
     
-
-      stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-      string_data = stringio.read()
+      for uploaded_file in uploaded_files:
+        stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+        string_data = stringio.read()
       
-      st.write(xyz_to_smi(string_data))
+        st.write(xyz_to_smi(string_data))
 
 
 
