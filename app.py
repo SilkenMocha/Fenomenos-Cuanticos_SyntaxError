@@ -18,7 +18,7 @@ from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit.Chem.Draw import SimilarityMaps
 from rdkit.Chem import rdMolDescriptors
 #_________________________
-import request
+import requests
 import json
 from io import StringIO
 #_________________________
