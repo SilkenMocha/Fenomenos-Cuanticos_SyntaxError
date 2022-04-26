@@ -149,7 +149,7 @@ if seleccion == "Visualizacion molecular":
           return None
       
       if __name__=="__main__":
-        with open(string_data) as f:
+        with open(xyz) as f:
           st.write(xyz_to_smi(f.read()))
 
       stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
