@@ -129,12 +129,14 @@ if seleccion == "Visualizacion molecular":
       mol = Chem.MolFromSmiles(compound_smiles)
       
       # Gasteiger partial charges
+      st.subheader("Gesteiger partial charges")
       AllChem.ComputeGasteigerCharges(mol)
       contribs = [mol.GetAtomWithIdx(i).GetDoubleProp('_GasteigerCharge') for i in range(mol.GetNumAtoms())]
       fig = SimilarityMaps.GetSimilarityMapFromWeights(mol, contribs, colorMap='jet', contourLines=10)
       st.pyplot(fig)
 
       # Crippen contributions to logP
+      st.subheader("Crippen contributions to log P")
       contribs = rdMolDescriptors._CalcCrippenContribs(mol)
       fig2 = SimilarityMaps.GetSimilarityMapFromWeights(mol,[x for x,y in contribs], colorMap='jet', contourLines=10)
       st.pyplot(fig2)
@@ -195,6 +197,7 @@ if seleccion == "Visualizacion molecular":
 
       blk=makeblock(compound_smiles)
       render_mol(blk)
+      otros_parametros(compound_smiles)
 #__________________________________________________________________________________________
 #Otros parámetros#
 if seleccion == "Otros parametros":
