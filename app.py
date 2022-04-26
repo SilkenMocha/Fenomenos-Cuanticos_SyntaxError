@@ -119,7 +119,25 @@ if seleccion == "Visualizacion molecular":
     st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional")
     
     seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
+    def otros_parametros(mol):
+      
+      m = Chem.MolFromSmiles(compound_smiles)
+      tpsa = Descriptors.TPSA(m)
+      logP = Descriptors.MolLogP(m)
+      st.write(tpsa)
+      st.write(logP)
+      mol = Chem.MolFromSmiles(compound_smiles)
+      
+      # Gasteiger partial charges
+      AllChem.ComputeGasteigerCharges(mol)
+      contribs = [mol.GetAtomWithIdx(i).GetDoubleProp('_GasteigerCharge') for i in range(mol.GetNumAtoms())]
+      fig = SimilarityMaps.GetSimilarityMapFromWeights(mol, contribs, colorMap='jet', contourLines=10)
+      st.pyplot(fig)
 
+      # Crippen contributions to logP
+      contribs = rdMolDescriptors._CalcCrippenContribs(mol)
+      fig2 = SimilarityMaps.GetSimilarityMapFromWeights(mol,[x for x,y in contribs], colorMap='jet', contourLines=10)
+      st.pyplot(fig2)
 
     if seleccion_molecula == "Subir un archivo":
       def render_mol(xyz):
@@ -135,7 +153,7 @@ if seleccion == "Visualizacion molecular":
       for uploaded_file in uploaded_files:
         xyz = uploaded_file.getvalue().decode("utf-8")
         render_mol(xyz)
-        st.write(xyz)
+        #st.write(xyz)
       
       #xyz to SMILES
       def xyz_to_smi(str_input):
@@ -144,16 +162,18 @@ if seleccion == "Visualizacion molecular":
         req = requests.post(webserver_url,data = {'options':options,'input':str_input})
       
         if req.status_code == 200:
-          return json.loads(req.text)['result'][0]
+          return json.loads(req.text)['result'].split()[0]
         else:
           return None
     
       for uploaded_file in uploaded_files:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
-      
+
+        compound_smiles = xyz_to_smi(string_data)
         st.subheader("SMILES: " + xyz_to_smi(string_data))
 
+        otros_parametros(compound_smiles)
 
 
     if seleccion_molecula == "SMILES":
@@ -201,10 +221,4 @@ if seleccion == "Otros parametros":
     fig2 = SimilarityMaps.GetSimilarityMapFromWeights(mol,[x for x,y in contribs], colorMap='jet', contourLines=10)
     st.pyplot(fig2)
 
-#def otros_parametros
-    #st.title(compound_smiles)
-    #m = Chem.MolFromSmiles(compound_smiles)
-    #tpsa = Descriptors.TPSA(m)
-    #logP = Descriptors.MolLogP(m)
-    #st.write(tpsa)
-    #st.write(logP)
+
