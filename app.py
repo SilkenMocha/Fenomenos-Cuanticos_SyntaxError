@@ -159,16 +159,39 @@ if seleccion == "Visualizacion molecular":
         #st.write(xyz)
       
       #xyz to SMILES
-      def xyz_to_smi(str_input):
-        webserver_url = "https://www.cheminfo.org/webservices/babel"
-        options='{"ph":"","hydrogens":"No change","coordinates":"None","inputFormat":"xyz -- XYZ cartesian coordinates format","outputFormat":"smi -- SMILES format"}'
-        req = requests.post(webserver_url,data = {'options':options,'input':str_input})
+      if file_type == "xyz":
+        def xyz_to_smi(str_input):
+          webserver_url = "https://www.cheminfo.org/webservices/babel"
+          options='{"ph":"","hydrogens":"No change","coordinates":"None","inputFormat":"xyz -- XYZ cartesian coordinates format","outputFormat":"smi -- SMILES format"}'
+          req = requests.post(webserver_url,data = {'options':options,'input':str_input})
       
-        if req.status_code == 200:
-          return json.loads(req.text)['result'].split()[0]
-        else:
-          return None
+          if req.status_code == 200:
+            return json.loads(req.text)['result'].split()[0]
+          else:
+            return None
     
+      if file_type == "mol":
+        def xyz_to_smi(str_input):
+          webserver_url = "https://www.cheminfo.org/webservices/babel"
+          options='{"ph":"","hydrogens":"No change","coordinates":"None","inputFormat":"mol -- MDL MOL format","outputFormat":"smi -- SMILES format"}'
+          req = requests.post(webserver_url,data = {'options':options,'input':str_input})
+      
+          if req.status_code == 200:
+            return json.loads(req.text)['result'].split()[0]
+          else:
+            return None
+
+      if file_type== "sdf":
+        def xyz_to_smi(str_input):
+          webserver_url = "https://www.cheminfo.org/webservices/babel"
+          options='{"ph":"","hydrogens":"No change","coordinates":"None","inputFormat":"sdf -- MDL MOL format","outputFormat":"smi -- SMILES format"}'
+          req = requests.post(webserver_url,data = {'options':options,'input':str_input})
+      
+          if req.status_code == 200:
+            return json.loads(req.text)['result'].split()[0]
+          else:
+            return None
+
       for uploaded_file in uploaded_files:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
         string_data = stringio.read()
