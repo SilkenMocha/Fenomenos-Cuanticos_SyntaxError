@@ -144,7 +144,7 @@ if seleccion == "Visualizacion molecular":
         req = requests.post(webserver_url,data = {'options':options,'input':str_input})
       
         if req.status_code == 200:
-          return json.loads(req.text)['result'].split(" ")[0]
+          return json.loads(req.text)['result'][0]
         else:
           return None
     
@@ -201,3 +201,10 @@ if seleccion == "Otros parametros":
     fig2 = SimilarityMaps.GetSimilarityMapFromWeights(mol,[x for x,y in contribs], colorMap='jet', contourLines=10)
     st.pyplot(fig2)
 
+#def otros_parametros
+    #st.title(compound_smiles)
+    #m = Chem.MolFromSmiles(compound_smiles)
+    #tpsa = Descriptors.TPSA(m)
+    #logP = Descriptors.MolLogP(m)
+    #st.write(tpsa)
+    #st.write(logP)
