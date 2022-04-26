@@ -147,10 +147,7 @@ if seleccion == "Visualizacion molecular":
           return json.loads(req.text)['result'].split()[0]
         else:
           return None
-      
-      if __name__=="__main__":
-        with open(xyz) as f:
-          st.write(xyz_to_smi(f.read()))
+    
 
       stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
       string_data = stringio.read()
