@@ -30,7 +30,7 @@ st.subheader("Erick López Saldviar 348916")
 
 
 
-seleccion = st.selectbox("Seleccione una opción: ", ["Visualizacion molecular", "Reactividad", "Otros parametros"])
+seleccion = st.selectbox("Seleccione una opción: ", ["Visualizacion molecular", "Reactividad"])
 
 #__________________________________________________________________________________________
 #Calculo reactividad#
@@ -151,6 +151,7 @@ if seleccion == "Visualizacion molecular":
         showmol(xyzview, height = 500,width=800)      
       
       uploaded_files = st.sidebar.file_uploader("Choose xyz files", accept_multiple_files=True)
+      file_type = st.sidebar.radio("Tipo de archivo", ("xyz","mol","sdf"))
 
       for uploaded_file in uploaded_files:
         xyz = uploaded_file.getvalue().decode("utf-8")
@@ -198,30 +199,5 @@ if seleccion == "Visualizacion molecular":
       blk=makeblock(compound_smiles)
       render_mol(blk)
       otros_parametros(compound_smiles)
-#__________________________________________________________________________________________
-#Otros parámetros#
-if seleccion == "Otros parametros":
-    st.write("Bienvenido. Aqui encontraras LogP y otras cosas")
-    compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
-
-    st.title(compound_smiles)
-    m = Chem.MolFromSmiles(compound_smiles)
-    tpsa = Descriptors.TPSA(m)
-    logP = Descriptors.MolLogP(m)
-    st.write(tpsa)
-    st.write(logP)
-
-
-    mol = Chem.MolFromSmiles(compound_smiles)
-    # Gasteiger partial charges
-    AllChem.ComputeGasteigerCharges(mol)
-    contribs = [mol.GetAtomWithIdx(i).GetDoubleProp('_GasteigerCharge') for i in range(mol.GetNumAtoms())]
-    fig = SimilarityMaps.GetSimilarityMapFromWeights(mol, contribs, colorMap='jet', contourLines=10)
-    st.pyplot(fig)
-
-    # Crippen contributions to logP
-    contribs = rdMolDescriptors._CalcCrippenContribs(mol)
-    fig2 = SimilarityMaps.GetSimilarityMapFromWeights(mol,[x for x,y in contribs], colorMap='jet', contourLines=10)
-    st.pyplot(fig2)
 
 
