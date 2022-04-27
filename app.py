@@ -56,14 +56,14 @@ if seleccion == "Reactividad":
     eV1p = ht1p * 27.2116
     eV1m = ht1m * 27.2116
   
-    kcal = str(ht*627.5)
+    kcal = ht*627.5
 
     A = eV0-eV1m
     I = eV1p - eV0
 
     n = (I-A)/2
     u = (I+A)/2
-    w = pow(u,2)/(2*n)
+    w = (pow(u,2))/(2*n)
 
 
     col1, col2 = st.columns(2)
