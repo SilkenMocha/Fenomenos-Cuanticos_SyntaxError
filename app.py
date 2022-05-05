@@ -22,6 +22,8 @@ import requests
 import json
 from io import StringIO
 #_________________________
+import pubchempy
+
 #Inicio#
 st.title ("FENÓMENOS CUÁNTICOS")
 st.subheader("Erick López Saldviar 348916")
