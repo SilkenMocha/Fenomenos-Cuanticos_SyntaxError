@@ -228,7 +228,7 @@ if seleccion == "Visualizacion molecular":
 
       compounds = pubchempy.get_compounds(compound_smiles, namespace='smiles')
       match = compounds[0]
-      st.write(match.iupac_name)
+      st.subheader(match.iupac_name)
 
 
       blk=makeblock(compound_smiles)
