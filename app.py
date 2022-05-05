@@ -127,6 +127,12 @@ if seleccion == "Visualizacion molecular":
       m = Chem.MolFromSmiles(compound_smiles)
       tpsa = Descriptors.TPSA(m)
       logP = Descriptors.MolLogP(m)
+
+      compounds = pubchempy.get_compounds(compound_smiles, namespace='smiles')
+      match = compounds[0]
+      st.write(match.iupac_name)
+
+
       st.write("TPSA: " + str(tpsa))
       st.write("Log P: "+ str(logP))
       mol = Chem.MolFromSmiles(compound_smiles)
