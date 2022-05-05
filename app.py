@@ -206,6 +206,10 @@ if seleccion == "Visualizacion molecular":
         compound_smiles = xyz_to_smi(string_data)
         st.subheader("SMILES: " + xyz_to_smi(string_data))
 
+        compounds = pubchempy.get_compounds(compound_smiles, namespace='smiles')
+        match = compounds[0]
+        st.subheader(match.iupac_name)
+
         otros_parametros(compound_smiles)
 
 
