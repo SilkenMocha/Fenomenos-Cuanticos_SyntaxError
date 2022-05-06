@@ -253,7 +253,7 @@ if seleccion == "Visualizacion molecular":
       col1, col2, col3 = st.columns(3)
       col1.metric("Molecular Formula", MolecularFormula[0]['MolecularFormula'])
       col2.metric("Exact Mass", ExactMass[0]['ExactMass'])
-      col3.metric("Monoisotopic Mass", round(MonoisotopicMass[0]['MonoisotopicMass'],5))
+      col3.metric("Monoisotopic Mass", MonoisotopicMass[0]['MonoisotopicMass'])
 
       col1, col2, col3 = st.columns(3)
       col1.metric("Molecular weight", round(mol_weight[0]['MolecularWeight'],5))
