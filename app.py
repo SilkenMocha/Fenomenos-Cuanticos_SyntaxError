@@ -244,7 +244,7 @@ if seleccion == "Visualizacion molecular":
       HBondAcceptorCount = pubchempy.get_properties('HBondAcceptorCount',compound_smiles, namespace='smiles')
       FeatureHydrophobeCount3D = pubchempy.get_properties('FeatureHydrophobeCount3D',compound_smiles, namespace='smiles')
       Complexity = pubchempy.get_properties('Complexity',compound_smiles, namespace='smiles')
-      #Charge = pubchempy.get_properties('Charge',compound_smiles, namespace='smiles')
+      Charge = pubchempy.get_properties('Charge',compound_smiles, namespace='smiles')
       CovalentUnitCount = pubchempy.get_properties('CovalentUnitCount',compound_smiles, namespace='smiles')
       FeatureAcceptorCount3D = pubchempy.get_properties('FeatureAcceptorCount3D',compound_smiles, namespace='smiles')
       FeatureDonorCount3D = pubchempy.get_properties('FeatureDonorCount3D',compound_smiles, namespace='smiles')
