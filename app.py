@@ -244,11 +244,18 @@ if seleccion == "Visualizacion molecular":
       HBondAcceptorCount = pubchempy.get_properties('HBondAcceptorCount',compound_smiles, namespace='smiles')
       FeatureHydrophobeCount3D = pubchempy.get_properties('FeatureHydrophobeCount3D',compound_smiles, namespace='smiles')
       Complexity = pubchempy.get_properties('Complexity',compound_smiles, namespace='smiles')
-      Charge = pubchempy.get_properties('Charge',compound_smiles, namespace='smiles')
+      #Charge = pubchempy.get_properties('Charge',compound_smiles, namespace='smiles')
       CovalentUnitCount = pubchempy.get_properties('CovalentUnitCount',compound_smiles, namespace='smiles')
       FeatureAcceptorCount3D = pubchempy.get_properties('FeatureAcceptorCount3D',compound_smiles, namespace='smiles')
       FeatureDonorCount3D = pubchempy.get_properties('FeatureDonorCount3D',compound_smiles, namespace='smiles')
       FeatureRingCount3D = pubchempy.get_properties('FeatureRingCount3D',compound_smiles, namespace='smiles')
+
+
+
+
+      blk=makeblock(compound_smiles)
+      render_mol(blk)
+      otros_parametros(compound_smiles)
 
       col1, col2, col3 = st.columns(3)
       col1.metric("Molecular Formula", MolecularFormula[0]['MolecularFormula'])
@@ -265,18 +272,12 @@ if seleccion == "Visualizacion molecular":
       col2.metric("H bond donor", str(HBondDonorCount[0]['HBondDonorCount']))
       col3.metric("H bond acceptor", str(HBondAcceptorCount[0]['HBondAcceptorCount']))
 
-      #col1, col2 = st.columns(2)
-      #col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
-      #col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
-      #col3.metric("Charge", Charge[0]['Charge'])
-
       col1, col2, col3 = st.columns(3)
       col1.metric("Ring count", str(FeatureRingCount3D[0]['FeatureRingCount3D']))
       col2.metric("Acceptor count", str(FeatureAcceptorCount3D[0]['FeatureAcceptorCount3D']))
       col3.metric("Donor count", str(FeatureDonorCount3D[0]['FeatureDonorCount3D']))
 
-      blk=makeblock(compound_smiles)
-      render_mol(blk)
-      otros_parametros(compound_smiles)
-
-
+      col1, col2 = st.columns(2)
+      col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
+      col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
+      #col3.metric("Charge", Charge[0]['Charge'])
