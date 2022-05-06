@@ -213,8 +213,8 @@ if seleccion == "Visualizacion molecular":
           string_data = stringio.read()          
           propiedades = sdf_data(string_data)
 
-          st.write(propiedades)
-          
+          #st.write(propiedades)
+
           if "ROTATIONAL.CONSTANTS" in propiedades:
             st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
         
