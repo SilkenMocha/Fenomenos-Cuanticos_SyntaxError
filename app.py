@@ -129,7 +129,7 @@ if seleccion == "Visualizacion molecular":
       m = Chem.MolFromSmiles(compound_smiles)
       #tpsa = Descriptors.TPSA(m)
       logP = Descriptors.MolLogP(m)
-      st.write("TPSA: " + str(tpsa))
+      #st.write("TPSA: " + str(tpsa))
       st.metric("Log P", str(logP))
       mol = Chem.MolFromSmiles(compound_smiles)
       
