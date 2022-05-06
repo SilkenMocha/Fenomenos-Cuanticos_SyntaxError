@@ -293,8 +293,7 @@ if seleccion == "Visualizacion molecular":
 
       blk=makeblock(compound_smiles)
       render_mol(blk)
-      otros_parametros(compound_smiles)
-
+      
       col1, col2, col3 = st.columns(3)
       col1.metric("Molecular Formula", MolecularFormula[0]['MolecularFormula'])
       col2.metric("Exact Mass", ExactMass[0]['ExactMass'])
@@ -319,4 +318,6 @@ if seleccion == "Visualizacion molecular":
       col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
       col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D']))
       col3.metric("Charge", Charge[0]['Charge'])
+
+      otros_parametros(compound_smiles)
 
