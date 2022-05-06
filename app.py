@@ -127,7 +127,7 @@ if seleccion == "Visualizacion molecular":
     def otros_parametros(mol):
       
       m = Chem.MolFromSmiles(compound_smiles)
-      tpsa = Descriptors.TPSA(m)
+      #tpsa = Descriptors.TPSA(m)
       logP = Descriptors.MolLogP(m)
       st.write("TPSA: " + str(tpsa))
       st.metric("Log P", str(logP))
