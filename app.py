@@ -282,6 +282,3 @@ if seleccion == "Visualizacion molecular":
       col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
       
 
-      #st.write("Covalent unit" + str(CovalentUnitCount[0]['CovalentUnitCount']))
-      #st.write("Hydrophobe count" + str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
-      #st.write("Charge" + Charge[0]['Charge'])
