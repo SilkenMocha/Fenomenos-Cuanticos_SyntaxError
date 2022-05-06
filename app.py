@@ -265,10 +265,10 @@ if seleccion == "Visualizacion molecular":
       col2.metric("H bond donor", str(HBondDonorCount[0]['HBondDonorCount']))
       col3.metric("H bond acceptor", str(HBondAcceptorCount[0]['HBondAcceptorCount']))
 
-      col1, col2, col3 = st.columns(3)
+      col1, col2 = st.columns(2)
       col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
       col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
-      col3.metric("Charge", Charge[0]['Charge'])
+      #col3.metric("Charge", Charge[0]['Charge'])
 
       col1, col2, col3 = st.columns(3)
       col1.metric("Ring count", str(FeatureRingCount3D[0]['FeatureRingCount3D']))
