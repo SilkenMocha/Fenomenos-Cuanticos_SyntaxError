@@ -281,4 +281,3 @@ if seleccion == "Visualizacion molecular":
       col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
       col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
       
-
