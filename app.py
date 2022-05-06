@@ -216,13 +216,13 @@ if seleccion == "Visualizacion molecular":
           #st.write(propiedades)
 
           if "ROTATIONAL.CONSTANTS" in propiedades:
-            st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
+            st.metric("Constantes de rotacion: ", propiedades['ROTATIONAL.CONSTANTS'])
         
           if "ELECTRONIC.ENERGY" in propiedades: 
-            st.write("Energía electronica: " + propiedades['ELECTRONIC.ENERGY'])
+            st.metric("Energía electronica: ", propiedades['ELECTRONIC.ENERGY'])
         
           if "DIPOLE.MOMENT" in propiedades:
-            st.write("Momento dipolar: " + propiedades['DIPOLE.MOMENT'])        
+            st.metric("Momento dipolar: ", propiedades['DIPOLE.MOMENT'])        
         
         def xyz_to_smi(str_input):
           webserver_url = "https://www.cheminfo.org/webservices/babel"
