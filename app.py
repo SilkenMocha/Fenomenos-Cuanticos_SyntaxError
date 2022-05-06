@@ -256,7 +256,7 @@ if seleccion == "Visualizacion molecular":
       col3.metric("Monoisotopic Mass", MonoisotopicMass[0]['MonoisotopicMass'])
 
       col1, col2, col3 = st.columns(3)
-      col1.metric("Molecular weight", round(mol_weight[0]['MolecularWeight'],5))
+      col1.metric("Molecular weight", mol_weight[0]['MolecularWeight'])
       col2.metric("TPSA", str(round(tpsa1[0]['TPSA'], 4)))
       col3.metric("Complexity", str(Complexity[0]['Complexity']))
 
