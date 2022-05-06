@@ -130,7 +130,7 @@ if seleccion == "Visualizacion molecular":
       tpsa = Descriptors.TPSA(m)
       logP = Descriptors.MolLogP(m)
       st.write("TPSA: " + str(tpsa))
-      st.write("Log P: "+ str(logP))
+      st.metric("Log P", str(logP))
       mol = Chem.MolFromSmiles(compound_smiles)
       
       # Gasteiger partial charges
