@@ -218,6 +218,17 @@ if seleccion == "Visualizacion molecular":
             return json.loads(req.text)['result'].split()[0]
           else:
             return None
+        
+        for uploaded_file in uploaded_files:
+          if "ROTATIONAL.CONSTANTS" in propiedades:
+            st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
+        
+          if "ELECTRONIC.ENERGY" in propiedades: 
+            st.write("Energía electronica: " + propiedades['ELECTRONIC.ENERGY'])
+        
+          if "DIPOLE.MOMENT" in propiedades:
+            st.write("Momento dipolar: " + propiedades['DIPOLE.MOMENT'])    
+
 
       for uploaded_file in uploaded_files:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -269,16 +280,7 @@ if seleccion == "Visualizacion molecular":
         col1, col2, col3= st.columns(3)
         col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
         col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D']))
-        col3.metric("Charge", Charge[0]['Charge'])
-
-        if "ROTATIONAL.CONSTANTS" in propiedades:
-          st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
-        
-        if "ELECTRONIC.ENERGY" in propiedades: 
-          st.write("Energía electronica: " + propiedades['ELECTRONIC.ENERGY'])
-        
-        if "DIPOLE.MOMENT" in propiedades:
-          st.write("Momento dipolar: " + propiedades['DIPOLE.MOMENT'])        
+        col3.metric("Charge", Charge[0]['Charge'])    
 
         otros_parametros(compound_smiles)
 
