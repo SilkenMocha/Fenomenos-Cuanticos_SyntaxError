@@ -189,26 +189,6 @@ if seleccion == "Visualizacion molecular":
             return None
 
       if file_type== "sdf":
-
-        def sdf_data(content):
-          lines = content.splitlines()
-          res = {}
-          aux = ""
-          aux2 = ""
-          app_line = False
-          for l in lines:
-              if app_line:
-                  if l == "":
-                      app_line = False
-                      res[aux] = aux2[1:]
-                      aux2 = ""
-                  else:
-                      aux2 = aux2 + "\n" + l
-              elif len(l) > 0 and l[0] == ">":
-                  aux = l[3:-1]
-                  app_line = True
-          return res 
-
         def xyz_to_smi(str_input):
           webserver_url = "https://www.cheminfo.org/webservices/babel"
           options='{"ph":"","hydrogens":"No change","coordinates":"None","inputFormat":"sdf -- MDL MOL format","outputFormat":"smi -- SMILES format"}'
@@ -218,9 +198,6 @@ if seleccion == "Visualizacion molecular":
             return json.loads(req.text)['result'].split()[0]
           else:
             return None
-        
-        for uploaded_file in uploaded_files:
-           
 
       for uploaded_file in uploaded_files:
         stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -273,15 +250,6 @@ if seleccion == "Visualizacion molecular":
         col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
         col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D']))
         col3.metric("Charge", Charge[0]['Charge'])
-
-        if "ROTATIONAL.CONSTANTS" in propiedades:
-          st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
-        
-        if "ELECTRONIC.ENERGY" in propiedades: 
-          st.write("Energía electronica: " + propiedades['ELECTRONIC.ENERGY'])
-        
-        if "DIPOLE.MOMENT" in propiedades:
-          st.write("Momento dipolar: " + propiedades['DIPOLE.MOMENT'])        
 
         otros_parametros(compound_smiles)
 
