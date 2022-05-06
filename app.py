@@ -219,15 +219,15 @@ if seleccion == "Visualizacion molecular":
           else:
             return None
         
-        for uploaded_file in uploaded_files:
-          if "ROTATIONAL.CONSTANTS" in propiedades:
-            st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
+        #for uploaded_file in uploaded_files:
+          #if "ROTATIONAL.CONSTANTS" in propiedades:
+            #st.write("Constantes de rotacion: " + propiedades['ROTATIONAL.CONSTANTS'])
         
-          if "ELECTRONIC.ENERGY" in propiedades: 
-            st.write("Energía electronica: " + propiedades['ELECTRONIC.ENERGY'])
+          #if "ELECTRONIC.ENERGY" in propiedades: 
+            #st.write("Energía electronica: " + propiedades['ELECTRONIC.ENERGY'])
         
-          if "DIPOLE.MOMENT" in propiedades:
-            st.write("Momento dipolar: " + propiedades['DIPOLE.MOMENT'])    
+          #if "DIPOLE.MOMENT" in propiedades:
+            #st.write("Momento dipolar: " + propiedades['DIPOLE.MOMENT'])    
 
 
       for uploaded_file in uploaded_files:
