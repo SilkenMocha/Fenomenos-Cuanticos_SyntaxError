@@ -277,7 +277,8 @@ if seleccion == "Visualizacion molecular":
       col2.metric("Acceptor count", str(FeatureAcceptorCount3D[0]['FeatureAcceptorCount3D']))
       col3.metric("Donor count", str(FeatureDonorCount3D[0]['FeatureDonorCount3D']))
 
-      col1, col2= st.columns(2)
+      col1, col2, col3= st.columns(2)
       col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
       col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D'])
-      
+      col3.metric("Charge", Charge[0]['Charge'])
+
