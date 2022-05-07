@@ -191,7 +191,7 @@ if seleccion == "Visualizacion molecular":
       for uploaded_file in uploaded_files:
         xyz = uploaded_file.getvalue().decode("utf-8")
         render_mol(xyz)
-        #st.write(xyz)
+
       
       #xyz to SMILES
       if file_type == "xyz":
