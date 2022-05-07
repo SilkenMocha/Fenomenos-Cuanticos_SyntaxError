@@ -37,9 +37,6 @@ st.image("https://www.meteorologiaenred.com/wp-content/uploads/2021/12/que-es-la
 st.subheader("Erick López Saldviar 348916")
 
 
-
-
-
 seleccion = st.selectbox("Seleccione una opción: ", ["Visualizacion molecular", "Reactividad"])
 
 #__________________________________________________________________________________________
