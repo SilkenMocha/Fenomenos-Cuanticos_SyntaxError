@@ -48,15 +48,15 @@ if seleccion == "Reactividad":
   with st.form(key='calc_react'):
     st.write("Bienvenido. Este programa te calculara parámetros de reactividad")
     st.subheader('Hartress')
-    ht = st.number_input("Hartress: ", format="%.4f", step=1e-4)
-    ht0 = st.number_input("Hartress 0: ", format="%.4f", step=1e-4)
-    ht1p = st.number_input("Hartress +1: ", format="%.4f", step=1e-4)
-    ht1m = st.number_input("Hartress -1: ", format="%.4f", step=1e-4)
+    ht = st.number_input("Hartress: ", format="%.4f", step=1e-4, value=-2385.94419)
+    ht0 = st.number_input("Hartress 0: ", format="%.4f", step=1e-4, value=-2385.94419)
+    ht1p = st.number_input("Hartress +1: ", format="%.4f", step=1e-4, value=-2385.71123)
+    ht1m = st.number_input("Hartress -1: ", format="%.4f", step=1e-4, value=-2385.94144)
     st.subheader('Nucleofilicidad')
-    homo = st.number_input("HOMO:", format="%.4f", step=1e-4)
-    lumo = st.number_input("LUMO: ", format="%.4f", step=1e-4)
-    homo_o = st.number_input("HOMO (O):", format="%.4f", step=1e-4)
-    lumo_o = st.number_input("LUMO (V): ", format="%.4f", step=1e-4)
+    homo = st.number_input("HOMO:", format="%.4f", step=1e-4, value=-0.21145)
+    lumo = st.number_input("LUMO: ", format="%.4f", step=1e-4, value=-0.02835)
+    homo_o = st.number_input("HOMO (O):", format="%.4f", step=1e-4, value=-0.26768)
+    lumo_o = st.number_input("LUMO (V): ", format="%.4f", step=1e-4, value=-0.00669)
 
     calcular = st.form_submit_button('Calcular')
  
