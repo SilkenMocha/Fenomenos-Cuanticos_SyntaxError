@@ -185,7 +185,7 @@ if seleccion == "Visualizacion molecular":
         xyzview.zoomTo()
         showmol(xyzview, height = 500,width=800)      
       
-      uploaded_files = st.sidebar.file_uploader("Choose files", accept_multiple_files=True)
+      uploaded_files = st.sidebar.file_uploader("Subir archivos", accept_multiple_files=True)
       file_type = st.sidebar.radio("Tipo de archivo", ("xyz","mol","sdf"))
 
       for uploaded_file in uploaded_files:
