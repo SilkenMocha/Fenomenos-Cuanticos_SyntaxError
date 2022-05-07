@@ -127,7 +127,7 @@ if seleccion == "Reactividad":
 #Visualización molecular#
 if seleccion == "Visualizacion molecular":
     st.title('VISUALIZACIÓN MOLECULAR')
-    st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional")
+    st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional al igual que ver información de la molécula")
     
     seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
     def otros_parametros(mol):
