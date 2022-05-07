@@ -32,8 +32,7 @@ from rdkit.Chem.Pharm2D import Gobbi_Pharm2D,Generate
 
 #Inicio#
 st.title ("FENÓMENOS CUÁNTICOS")
-
-
+st.image("https://www.meteorologiaenred.com/wp-content/uploads/2021/12/que-es-la-fisica-cuantica-caracteristicas.jpg")
 st.subheader("Erick López Saldviar 348916")
 
 
@@ -45,7 +44,6 @@ seleccion = st.selectbox("Seleccione una opción: ", ["Visualizacion molecular",
 #__________________________________________________________________________________________
 #Calculo reactividad#
 if seleccion == "Reactividad":
-  st.image("https://docplayer.es/docs-images/62/47910456/images/1-0.jpg", width = 300 , use_column_width = 'auto')
   with st.form(key='calc_react'):
     st.write("Bienvenido. Este programa te calculara parámetros de reactividad")
     st.subheader('Hartress')
@@ -130,7 +128,6 @@ if seleccion == "Reactividad":
 #Visualización molecular#
 if seleccion == "Visualizacion molecular":
     st.title('VISUALIZACIÓN MOLECULAR')
-    st.image("https://www.meteorologiaenred.com/wp-content/uploads/2021/12/que-es-la-fisica-cuantica-caracteristicas.jpg")
     st.write("Bienvenido. Aquí podrás ver la molecula en su forma tridimensional al igual que ver información de la molécula")
     
     seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
