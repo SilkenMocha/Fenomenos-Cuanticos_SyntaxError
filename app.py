@@ -45,7 +45,7 @@ seleccion = st.selectbox("Seleccione una opción: ", ["Visualizacion molecular",
 #__________________________________________________________________________________________
 #Calculo reactividad#
 if seleccion == "Reactividad":
-  st.image("https://docplayer.es/docs-images/62/47910456/images/1-0.jpg")
+  st.image("https://docplayer.es/docs-images/62/47910456/images/1-0.jpg", width = 600px)
   with st.form(key='calc_react'):
     st.write("Bienvenido. Este programa te calculara parámetros de reactividad")
     st.subheader('Hartress')
