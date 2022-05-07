@@ -23,6 +23,12 @@ import json
 from io import StringIO
 #_________________________
 import pubchempy
+#_________________________
+from rdkit.Chem import ChemicalFeatures
+from rdkit.Chem.Pharm2D.SigFactory import SigFactory
+from rdkit.Chem.Pharm2D import Generate
+
+from rdkit.Chem.Pharm2D import Gobbi_Pharm2D,Generate
 
 #Inicio#
 st.title ("FENÓMENOS CUÁNTICOS")
@@ -126,12 +132,12 @@ if seleccion == "Visualizacion molecular":
     seleccion_molecula = st.selectbox("Seleccione una opción: ", ["SMILES", "Subir un archivo"])
     def otros_parametros(mol):
       
-      m = Chem.MolFromSmiles(compound_smiles)
+      mol = Chem.MolFromSmiles(compound_smiles)
       #tpsa = Descriptors.TPSA(m)
-      logP = Descriptors.MolLogP(m)
+      logP = Descriptors.MolLogP(mol)
       #st.write("TPSA: " + str(tpsa))
       st.metric("Log P", str(logP))
-      mol = Chem.MolFromSmiles(compound_smiles)
+      
       
       # Gasteiger partial charges
       st.subheader("Gesteiger partial charges")
@@ -145,6 +151,28 @@ if seleccion == "Visualizacion molecular":
       contribs = rdMolDescriptors._CalcCrippenContribs(mol)
       fig2 = SimilarityMaps.GetSimilarityMapFromWeights(mol,[x for x,y in contribs], colorMap='jet', contourLines=10)
       st.pyplot(fig2)
+
+      st.subheader("Pharmacophore")
+
+      with st.expander("Abreviaciones"):
+        st.write("HA: Hydrogen-bond acceptor")
+        st.write("HD: Hydrogen-bond donor")
+        st.write("AR: Aromatic ring")
+        st.write("RR: Two rings")
+        st.write("LH: Hydrophobic") 
+      
+      with st.expander("Pharmacophore"):     
+        
+        fp = Generate.Gen2DFingerprint(mol,Gobbi_Pharm2D.factory)
+        list1 = list(fp.GetOnBits())
+
+        cols = st.columns(2)
+        currentCol = 0
+        for el in list1:  
+          pharmacophore = Gobbi_Pharm2D.factory.GetBitDescription(el)
+          cols[currentCol].metric(pharmacophore[:pharmacophore.find('|')], pharmacophore[pharmacophore.find('|')-1:])
+          currentCol=(currentCol + 1) % len(cols)
+
 
     if seleccion_molecula == "Subir un archivo":
       def render_mol(xyz):
@@ -261,6 +289,7 @@ if seleccion == "Visualizacion molecular":
         FeatureAcceptorCount3D = pubchempy.get_properties('FeatureAcceptorCount3D',compound_smiles, namespace='smiles')
         FeatureDonorCount3D = pubchempy.get_properties('FeatureDonorCount3D',compound_smiles, namespace='smiles')
         FeatureRingCount3D = pubchempy.get_properties('FeatureRingCount3D',compound_smiles, namespace='smiles')
+        XLogP = pubchempy.get_properties('XLogP',compound_smiles, namespace='smiles')
 
         col1, col2, col3 = st.columns(3)
         col1.metric("Molecular Formula", MolecularFormula[0]['MolecularFormula'])
@@ -286,6 +315,8 @@ if seleccion == "Visualizacion molecular":
         col1.metric("Covalent unit", str(CovalentUnitCount[0]['CovalentUnitCount']))
         col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D']))
         col3.metric("Charge", Charge[0]['Charge'])
+
+        #st.metric("Log P", XLogP[0]['XLogP'])
 
         otros_parametros(compound_smiles)
 
@@ -326,6 +357,9 @@ if seleccion == "Visualizacion molecular":
       FeatureAcceptorCount3D = pubchempy.get_properties('FeatureAcceptorCount3D',compound_smiles, namespace='smiles')
       FeatureDonorCount3D = pubchempy.get_properties('FeatureDonorCount3D',compound_smiles, namespace='smiles')
       FeatureRingCount3D = pubchempy.get_properties('FeatureRingCount3D',compound_smiles, namespace='smiles')
+      XLogP = pubchempy.get_properties('XLogP',compound_smiles, namespace='smiles')
+
+      
 
       blk=makeblock(compound_smiles)
       render_mol(blk)
@@ -355,5 +389,8 @@ if seleccion == "Visualizacion molecular":
       col2.metric("Hydrophobe count", str(FeatureHydrophobeCount3D[0]['FeatureHydrophobeCount3D']))
       col3.metric("Charge", Charge[0]['Charge'])
 
+      #st.metric("Log P", XLogP[0]['XLogP'])
+
       otros_parametros(compound_smiles)
+
 
