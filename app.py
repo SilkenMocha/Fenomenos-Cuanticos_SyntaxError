@@ -32,6 +32,7 @@ from rdkit.Chem.Pharm2D import Gobbi_Pharm2D,Generate
 
 #Inicio#
 st.title ("FENÓMENOS CUÁNTICOS")
+st.subheader("Calculos de reactividad y visualización molecular")
 st.image("https://www.meteorologiaenred.com/wp-content/uploads/2021/12/que-es-la-fisica-cuantica-caracteristicas.jpg")
 st.subheader("Erick López Saldviar 348916")
 
