@@ -322,7 +322,7 @@ if seleccion == "Visualizacion molecular":
 
 
     if seleccion_molecula == "SMILES":
-      compound_smiles=st.text_input('SMILES please','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
+      compound_smiles=st.text_input('Intoduce SMILES','COc1cccc2cc(C(=O)NCCCCN3CCN(c4cccc5nccnc54)CC3)oc21')
       def makeblock(smi):
           mol = Chem.MolFromSmiles(smi)
           mol = Chem.AddHs(mol)
