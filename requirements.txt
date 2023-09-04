@@ -5,4 +5,4 @@ numpy
 py3Dmol
 matplotlib
 PubChemPy
-streamlit
+ipython_genutils==0.1.0
